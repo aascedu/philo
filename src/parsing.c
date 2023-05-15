@@ -58,6 +58,7 @@ int	init_struct(t_data *data, int argc, char **argv)
 		" time_to_sleep [number_of_times_each_philosopher_must_eat]\n");
 		return (1);
 	}
+	data->status = 1;
 	data->nb_philo = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
