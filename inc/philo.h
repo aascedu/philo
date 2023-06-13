@@ -31,20 +31,20 @@ typedef struct s_philo	t_philo;
 struct s_data
 {
 	int				status;
-	pthread_mutex_t	status;
+	pthread_mutex_t	alive;
 	int				nb_philo;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nb_must_eat;
 	t_philo			*philos;
-	pthread_t		*threads;
-	pthread_mutex_t	print;
+	pthread_mutex_t	m_print;
 };
 
 struct s_philo
 {
 	int				philo;
+	pthread_t		thread;
 	int				status;
 	int				nbr_meal;
 	long long		last_meal;
@@ -57,9 +57,12 @@ int		check_input(t_data *data);
 int		ft_atoi(char *str);
 int		init_struct(t_data *data, int argc, char **argv);
 
-// philo.c function
-int		init_philo(t_data *data, t_philo *philos);
+// philo.c functions
+int		init_philo(t_data *data);
 
-int		ft_print(t_philo *philo, char *msg);
+// start.c functions
+int		start_philos(t_data *data);
+void	free_philos(t_data *data);
+void	destroy_mutex_i(t_data *data, int i);
 
 #endif

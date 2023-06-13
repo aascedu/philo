@@ -15,7 +15,8 @@ NAME = philo
 SRCS = src/main.c \
 		src/parsing.c \
 		src/philo.c \
-		src/utils.c
+		src/utils.c \
+		src/start.c
 
 HEADER = inc/philo.h
 
