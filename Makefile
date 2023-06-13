@@ -24,7 +24,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -pthread -I./inc
-SANITIZE = -fsanitize=address -g3
+SANITIZE = -fsanitize=thread -g3
 RM = rm -rf
 
 %.o : %.c $(HEADER)

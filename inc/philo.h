@@ -30,15 +30,17 @@ typedef struct s_philo	t_philo;
 
 struct s_data
 {
-	int				status;
+	t_philo			*philos;
+	pthread_mutex_t	*m_fork;
+	int				*fork;
 	pthread_mutex_t	alive;
+	int				status;
+	pthread_mutex_t	print;
 	int				nb_philo;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nb_must_eat;
-	t_philo			*philos;
-	pthread_mutex_t	m_print;
 };
 
 struct s_philo
@@ -49,7 +51,6 @@ struct s_philo
 	int				nbr_meal;
 	long long		last_meal;
 	t_data			*data;
-	pthread_mutex_t	fork_mutex;
 };
 
 // parsing.c functions

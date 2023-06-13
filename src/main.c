@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 	if (start_philos(&data))
 		status = 1;
 	wait_end(&data);
-	destroy_mutex_i(&data, data.nb_philo);
-	free(data.philos);
+	destroy_mutex_i(&data, data.nb_philo - 1);
 	return (status);
 }
