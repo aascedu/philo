@@ -43,3 +43,5 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	}
 	return (s1[i] - s2[i]);
 }
+// mutex:[0][1][2][3][4]
+// fork :[1][2][3][4][5]

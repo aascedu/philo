@@ -57,7 +57,7 @@ int	init_philo(t_data *data)
 	i = -1;
 	while (++i < data->nb_philo)
 		data->fork[i] = 0;
-	data->m_fork = ft_calloc(sizeof(pthread_mutex_t) * data->nb_philo);
+	data->m_fork = malloc(sizeof(pthread_mutex_t) * data->nb_philo);
 	if (!data->m_fork)
 		return (free(data->philos), free(data->fork), 1);
 	if (init_mutex(data))

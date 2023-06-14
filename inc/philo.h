@@ -53,17 +53,29 @@ struct s_philo
 	t_data			*data;
 };
 
+// actions.c functions
+int					get_fork_nbr(t_philo *philo);
+int					is_eating(t_philo *philo);
+
+// main.c functions
+void				wait_end(t_data *data);
+
 // parsing.c functions
-int		check_input(t_data *data);
-int		ft_atoi(char *str);
-int		init_struct(t_data *data, int argc, char **argv);
+int					check_input(t_data *data);
+int					ft_atoi(char *str);
+int					init_struct(t_data *data, int argc, char **argv);
 
 // philo.c functions
-int		init_philo(t_data *data);
+int					init_philo(t_data *data);
 
 // start.c functions
-int		start_philos(t_data *data);
-void	free_philos(t_data *data);
-void	destroy_mutex_i(t_data *data, int i);
+int					start_philos(t_data *data);
+void				free_philos(t_data *data);
+void				destroy_mutex_i(t_data *data, int i);
+
+// utils.c functions
+unsigned long long	ft_get_time_ms(void);
+unsigned long long	ft_time_from_start(void);
+int					ft_strncmp(char *s1, char *s2, int n);
 
 #endif

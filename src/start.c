@@ -16,12 +16,14 @@ void	*philo_routine(t_philo *arg)
 {
 	pthread_mutex_lock(&arg->data->print);
 	pthread_mutex_unlock(&arg->data->print);
-	// while ((arg->nbr_meal != arg->data->nb_must_eat \
-	// || arg->data->nb_must_eat == -1) && arg->status)
-	// {
-	// 	if (arg->philo % 2 == 0)
-	// 		usleep(100);
-	// }
+	if (arg->philo % 2 == 0)
+		usleep(1000);
+	is_eating(arg);
+	// is_sleeping();
+	// is_thinking();
+	pthread_mutex_lock(&arg->data->print);
+	printf("finished\n");
+	pthread_mutex_unlock(&arg->data->print);
 	return (NULL);
 }
 
@@ -39,6 +41,7 @@ int	start_philos(t_data *data)
 	int	i;
 
 	i = 0;
+	ft_time_from_start();
 	pthread_mutex_lock(&data->print);
 	while (i < data->nb_philo)
 	{

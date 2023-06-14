@@ -16,7 +16,8 @@ SRCS = src/main.c \
 		src/parsing.c \
 		src/philo.c \
 		src/utils.c \
-		src/start.c
+		src/start.c \
+		src/actions.c
 
 HEADER = inc/philo.h
 
