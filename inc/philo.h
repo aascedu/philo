@@ -34,6 +34,7 @@ struct s_data
 	pthread_mutex_t	*m_fork;
 	int				*fork;
 	pthread_mutex_t	alive;
+	pthread_mutex_t	launch;
 	int				status;
 	pthread_mutex_t	print;
 	int				nb_philo;
@@ -41,6 +42,7 @@ struct s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				nb_must_eat;
+	long long		time_start;
 };
 
 struct s_philo
@@ -56,6 +58,7 @@ struct s_philo
 // actions.c functions
 int					get_fork_nbr(t_philo *philo);
 int					is_eating(t_philo *philo);
+int					is_thinking(t_philo *philo);
 
 // main.c functions
 void				wait_end(t_data *data);
@@ -75,7 +78,7 @@ void				destroy_mutex_i(t_data *data, int i);
 
 // utils.c functions
 unsigned long long	ft_get_time_ms(void);
-unsigned long long	ft_time_from_start(void);
+unsigned long long	ft_time_from_start(long long begin);
 int					ft_strncmp(char *s1, char *s2, int n);
 
 #endif

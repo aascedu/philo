@@ -15,6 +15,7 @@
 void	destroy_mutex_i(t_data *data, int i)
 {
 	pthread_mutex_destroy(&data->print);
+	pthread_mutex_destroy(&data->launch);
 	while (i >= 0)
 	{
 		pthread_mutex_destroy(&data->m_fork[i]);
@@ -31,6 +32,8 @@ int	init_mutex(t_data *data)
 
 	if (pthread_mutex_init(&data->print, NULL))
 		return (1);
+	if (pthread_mutex_init(&data->launch, NULL))
+		return ((void)pthread_mutex_destroy(&data->print), 1);
 	i = 0;
 	while (i < data->nb_philo)
 	{

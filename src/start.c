@@ -14,16 +14,13 @@
 
 void	*philo_routine(t_philo *arg)
 {
-	pthread_mutex_lock(&arg->data->print);
-	pthread_mutex_unlock(&arg->data->print);
-	if (arg->philo % 2 == 0)
-		usleep(1000);
+	pthread_mutex_lock(&arg->data->launch);
+	pthread_mutex_unlock(&arg->data->launch);
+	if (arg->philo % 2 != 0)
+		usleep(20000);
+	is_thinking(arg);
 	is_eating(arg);
-	// is_sleeping();
 	// is_thinking();
-	pthread_mutex_lock(&arg->data->print);
-	printf("finished\n");
-	pthread_mutex_unlock(&arg->data->print);
 	return (NULL);
 }
 
@@ -41,8 +38,7 @@ int	start_philos(t_data *data)
 	int	i;
 
 	i = 0;
-	ft_time_from_start();
-	pthread_mutex_lock(&data->print);
+	pthread_mutex_lock(&data->launch);
 	while (i < data->nb_philo)
 	{
 		set_philo_info(data, i);
@@ -50,10 +46,13 @@ int	start_philos(t_data *data)
 		(void *)philo_routine, &data->philos[i]))
 		{
 			destroy_mutex_i(data, i);
+			// free la structure.
 			return (1);
 		}
 		i++;
 	}
-	pthread_mutex_unlock(&data->print);
+	data->time_start = ft_get_time_ms();
+	pthread_mutex_unlock(&data->launch);
+
 	return (0);
 }

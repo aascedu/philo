@@ -20,11 +20,8 @@ unsigned long long	ft_get_time_ms(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-unsigned long long	ft_time_from_start(void)
+unsigned long long	ft_time_from_start(long long begin)
 {
-	static long long	begin;
-
-	begin = 0;
 	if (!begin)
 		begin = ft_get_time_ms();
 	return (ft_get_time_ms() - begin);
@@ -43,5 +40,3 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	}
 	return (s1[i] - s2[i]);
 }
-// mutex:[0][1][2][3][4]
-// fork :[1][2][3][4][5]
