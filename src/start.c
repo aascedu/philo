@@ -12,15 +12,18 @@
 
 #include "philo.h"
 
-void	*philo_routine(t_philo *arg)
+void	*philo_routine(t_philo *philo)
 {
-	pthread_mutex_lock(&arg->data->launch);
-	pthread_mutex_unlock(&arg->data->launch);
-	if (arg->philo % 2 != 0)
-		usleep(20000);
-	is_thinking(arg);
-	is_eating(arg);
-	// is_thinking();
+	pthread_mutex_lock(&philo->data->launch);
+	pthread_mutex_unlock(&philo->data->launch);
+	if (philo->philo % 2 != 0)
+		usleep(10000);
+	while (1)
+	{
+		is_thinking(philo);
+		is_eating(philo);
+		is_sleeping(philo);
+	}
 	return (NULL);
 }
 
@@ -53,6 +56,5 @@ int	start_philos(t_data *data)
 	}
 	data->time_start = ft_get_time_ms();
 	pthread_mutex_unlock(&data->launch);
-
 	return (0);
 }

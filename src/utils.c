@@ -12,7 +12,14 @@
 
 #include "philo.h"
 
-unsigned long long	ft_get_time_ms(void)
+void	display_msg(t_philo *philo, char *msg)
+{
+	pthread_mutex_lock(&philo->data->print);
+	printf("%lld %d %s\n", ft_time_from_start(philo->data->time_start), philo->philo, msg);
+	pthread_mutex_unlock(&philo->data->print);
+}
+
+long long	ft_get_time_ms(void)
 {
 	struct timeval	time;
 
@@ -20,7 +27,7 @@ unsigned long long	ft_get_time_ms(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-unsigned long long	ft_time_from_start(long long begin)
+long long	ft_time_from_start(long long begin)
 {
 	if (!begin)
 		begin = ft_get_time_ms();

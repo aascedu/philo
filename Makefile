@@ -17,7 +17,10 @@ SRCS = src/main.c \
 		src/philo.c \
 		src/utils.c \
 		src/start.c \
-		src/actions.c
+		src/eating.c \
+		src/sleeping.c \
+		src/thinking.c \
+		src/dead.c
 
 HEADER = inc/philo.h
 
