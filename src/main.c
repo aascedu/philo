@@ -17,7 +17,7 @@ void	wait_end(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->nb_philo)
+	while (i < data->nb_philo && data->status == 0)
 	{
 		pthread_join(data->philos[i].thread, NULL);
 		i++;

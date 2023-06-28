@@ -18,11 +18,12 @@ void	*philo_routine(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->launch);
 	if (philo->philo % 2 != 0)
 		usleep(10000);
-	while (1)
+	while (!philo->data->status)
 	{
 		is_thinking(philo);
 		is_eating(philo);
 		is_sleeping(philo);
+		is_dead(philo);
 	}
 	return (NULL);
 }
@@ -31,7 +32,7 @@ void	set_philo_info(t_data *data, int i)
 {
 		data->philos[i].philo = i + 1;
 		data->philos[i].status = 1;
-		data->philos[i].last_meal = 0;
+		data->philos[i].last_meal = data->time_start;
 		data->philos[i].nbr_meal = 0;
 		data->philos[i].data = data;
 }

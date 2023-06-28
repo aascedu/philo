@@ -20,7 +20,7 @@ SRCS = src/main.c \
 		src/eating.c \
 		src/sleeping.c \
 		src/thinking.c \
-		src/dead.c
+		src/end.c
 
 HEADER = inc/philo.h
 

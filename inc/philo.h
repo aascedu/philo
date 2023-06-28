@@ -49,7 +49,7 @@ struct s_philo
 	t_data			*data;
 };
 
-// dead.c functions
+// end.c functions
 int			 is_dead(t_philo *philo);
 
 // eating.c functions
