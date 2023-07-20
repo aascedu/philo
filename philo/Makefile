@@ -6,7 +6,7 @@
 #    By: aascedu <aascedu@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 14:36:32 by aascedu           #+#    #+#              #
-#    Updated: 2023/03/29 14:22:42 by aascedu          ###   ########lyon.fr    #
+#    Updated: 2023/07/20 09:12:47 by aascedu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ all :
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $(NAME)
 
-debug : $(OBJS)
-	$(CC) $(CFLAGS) $(SANITIZE) $^ -o $(NAME)
+#debug : $(OBJS)
+#	$(CC) $(CFLAGS) $(SANITIZE) $^ -o $(NAME)
 
 clean :
 	$(RM) $(OBJS)
@@ -53,4 +53,4 @@ fclean :
 re : fclean
 	make all
 
-.PHONY : all clean fclean re debug
+.PHONY : all clean fclean re #debug
