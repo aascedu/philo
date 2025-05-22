@@ -58,8 +58,9 @@ int	init_philo(t_data *data)
 	int	i;
 
 	data->philos = (t_philo *)malloc(sizeof(t_philo) * data->nb_philo);
-	if (!data->philos)
+	if (!data->philos) {
 		return (1);
+	}
 	data->fork = malloc(sizeof(int) * data->nb_philo);
 	if (!data->fork)
 		return (free(data->philos), 1);

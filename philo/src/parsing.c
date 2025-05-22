@@ -60,6 +60,9 @@ int	init_struct(t_data *data, int argc, char **argv)
 	}
 	data->status = 0;
 	data->nb_philo = ft_atoi(argv[1]);
+	if (data->nb_philo > 200) {
+		return 1;
+	}
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
